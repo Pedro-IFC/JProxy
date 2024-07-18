@@ -1,0 +1,15 @@
+docker run --name lojas -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=loja -p 1414:3306 -v C:\Users\Pedro\Documents\docker:/var/lib/mysql -d mysql:latest
+
+docker exec -it lojas bash
+
+mysql -h 127.0.0.1 -P 1414 -u root -p
+
+CREATE DATABASE loja;
+use loja;
+CREATE TABLE produtos(
+	id INT,
+    nome VARCHAR(80),
+    preco INT,
+    quantidade INT
+);
+
