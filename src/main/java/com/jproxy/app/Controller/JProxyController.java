@@ -22,7 +22,7 @@ public class JProxyController {
     	return this.produtoService.saveData(produto);
     }
 
-    @GetMapping("/produto")
+    @PostMapping("/produto")
     public Produto getProduto(@RequestBody int id) {
     	return this.produtoService.getProduto(id);
     }

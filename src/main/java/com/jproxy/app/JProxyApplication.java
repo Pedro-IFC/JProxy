@@ -11,5 +11,3 @@ public class JProxyApplication {
 		SpringApplication.run(JProxyApplication.class, args);
 	}
 }
-
-//ob - atualizado por ultimo 
