@@ -11,22 +11,22 @@ import lombok.AllArgsConstructor;
 
 @Entity
 @Data
-@Table(name="produto")
+@Table(name="produtos")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Produto {
 	@Id
 	@Column(name="id")
 	@GeneratedValue
-	private int id;
+	public int id;
 	
 	@Column(name="nome")
-	private String nome;
+	public String nome;
 	
 	
 	@Column(name="preco")
-	private int preco;
+	public int preco;
 	
 	@Column(name="quantidade")
-	private int quantidade;
+	public int quantidade;
 }
