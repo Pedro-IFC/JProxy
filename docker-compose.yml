@@ -1,0 +1,38 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: loja
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - mynetwork
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: always  # Adicionado para garantir que o serviço reinicie em caso de falha
+
+  app:
+    image: jproxy:latest
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/loja
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+    volumes:
+      - ./target/jproxy.jar:/jproxy.jar
+    command: ["java", "-jar", "/jproxy.jar"]
+    ports:
+      - "8080:8080"
+    restart: always 
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  db_data:

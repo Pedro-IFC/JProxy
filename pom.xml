@@ -13,19 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>JProxy</name>
     <description>Demo project for Spring Boot</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
+    <url>https://exemplo.com</url>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -51,12 +39,37 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.22</version> <!-- Versão pode variar -->
             <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>
         <plugins>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-compiler-plugin</artifactId>
+	            <executions>
+	                <execution>
+	                    <id>default-compile</id>
+	                    <phase>compile</phase>
+	                    <goals>
+	                        <goal>compile</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	        </plugin>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-jar-plugin</artifactId>
+	            <executions>
+	                <execution>
+	                    <id>default-jar</id>
+	                    <phase>package</phase>
+	                    <goals>
+	                        <goal>jar</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	        </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
