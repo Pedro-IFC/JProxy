@@ -5,14 +5,13 @@ services:
       MYSQL_DATABASE: loja
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    networks:
-      - mynetwork
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD} # Adicione esta linha para definir a senha do usuário root
     volumes:
       - db_data:/var/lib/mysql
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d # Monta o diretório de scripts SQL
     ports:
       - "3306:3306"
-    restart: always  # Adicionado para garantir que o serviço reinicie em caso de falha
-
+    restart: always 
   app:
     image: jproxy:latest
     environment:
@@ -21,18 +20,11 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
     depends_on:
       - db
-    networks:
-      - mynetwork
     volumes:
       - ./target/jproxy.jar:/jproxy.jar
     command: ["java", "-jar", "/jproxy.jar"]
     ports:
       - "8080:8080"
     restart: always 
-
-networks:
-  mynetwork:
-    driver: bridge
-
 volumes:
   db_data:

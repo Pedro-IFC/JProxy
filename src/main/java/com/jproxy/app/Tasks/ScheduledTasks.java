@@ -12,6 +12,7 @@ public class ScheduledTasks {
     public void manterCacheado() {
     	for(int i=0; i<ProdutoCacheado.getInstance().getProdutos().size();i++) {
     		if(!ProdutoCacheado.getInstance().getProdutos().get(i).manter()) {
+    			System.out.println("Saiu do cache: " + ProdutoCacheado.getInstance().getProdutos().get(i).getProduto().toString());
     			ProdutoCacheado.getInstance().getProdutos().remove(i);
     			i--;
     		}else {

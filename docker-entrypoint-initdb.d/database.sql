@@ -1,4 +1,3 @@
-CREATE DATABASE loja;
 use loja;
 CREATE TABLE produtos(
 	id INT,

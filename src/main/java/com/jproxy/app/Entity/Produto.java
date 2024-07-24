@@ -29,4 +29,20 @@ public class Produto {
 	
 	@Column(name="quantidade")
 	public int quantidade;
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Produto [id=");
+		builder.append(id);
+		builder.append(", nome=");
+		builder.append(nome);
+		builder.append(", preco=");
+		builder.append(preco);
+		builder.append(", quantidade=");
+		builder.append(quantidade);
+		builder.append("]");
+		return builder.toString();
+	}
+	
 }
